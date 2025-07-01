@@ -745,37 +745,78 @@
         }
 
         /* Navigation */
-       .nav {
+        .nav {
   position: absolute;
   top: 20px;
   left: 20px;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
   border-radius: 25px;
   padding: 10px 15px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 10px;
-  transition: opacity 0.4s ease;
+  transition: top 0.4s ease, opacity 0.3s ease;
   opacity: 1;
 }
 
+/* Navigation links */
 .nav a {
   display: inline-block;
   padding: 8px 16px;
   color: #fff;
+  background: rgba(102, 126, 234, 0.15);
   text-decoration: none;
   border-radius: 20px;
   font-weight: 500;
-  background: rgba(102, 126, 234, 0.15);
   transition: all 0.3s ease;
 }
 
+/* Hover effect */
 .nav a:hover {
   background: #667eea;
   color: white;
   transform: scale(1.05);
+}
+
+/* Menu icon for mobile */
+.menu-icon {
+  font-size: 2rem;
+  color: white;
+  display: none;
+  cursor: pointer;
+  margin-right: auto;
+}
+
+/* Hide checkbox input */
+.menu-toggle {
+  display: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .nav a {
+    display: none;
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .menu-toggle:checked + .menu-icon ~ a {
+    display: inline-block;
+  }
 }
 
 
@@ -826,16 +867,17 @@
   </div>
 </div>
 
-    <nav class="nav">
-        <a href="#hero">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#achievements">Awards</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-    </nav>
+    <div class="nav">
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+  <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+  <a href="#hero">Home</a>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</div>
+
     
 
     <section id="hero" class="hero">

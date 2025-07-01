@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kush Singhal - Cybersecurity & Android Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: transparent;
+    position: relative;
+    z-index: 1;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 0.5em;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .tagline {
+            font-size: 1.3em;
+            margin-bottom: 1em;
+            opacity: 0.9;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1em;
+            margin-bottom: 2em;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.8;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2em;
+            margin-bottom: 2em;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-weight: 600;
+        }
+
+        .cta-button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 3em;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    background: white;
+    padding: 3em;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.about-content:hover {
+    transform: translateY(-5px);
+}
+
+.about-text {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #444;
+    text-align: center;
+    max-width: 700px;
+}
+
+.about-highlights {
+    list-style: none;
+    margin-top: 1.5em;
+    padding-left: 0;
+    max-width: 600px;
+    text-align: left;
+}
+
+.about-highlights li {
+    position: relative;
+    padding: 0.6em 1.5em;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 0.8em;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.about-highlights li:hover {
+    transform: scale(1.02);
+}
+
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2em;
+            margin-top: 2em;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2em;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1em;
+            font-size: 1.3em;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5em;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5em 1em;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            margin: 2em 0;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 2em;
+            margin: 2em 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-item h3 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 0.5em;
+        }
+
+        .timeline-item .role {
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 1em;
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-item li {
+            padding: 0.3em 0;
+            padding-left: 1.5em;
+            position: relative;
+        }
+
+        .timeline-item li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2em;
+            margin-top: 2em;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5em;
+        }
+
+        .project-header h3 {
+            margin-bottom: 0.5em;
+        }
+
+        .project-content {
+            padding: 1.5em;
+        }
+
+        .project-features {
+            list-style: none;
+            margin-top: 1em;
+        }
+
+        .project-features li {
+            padding: 0.3em 0;
+            padding-left: 1.5em;
+            position: relative;
+        }
+
+        .project-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        /* Achievements Section */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5em;
+            margin-top: 2em;
+        }
+
+        .achievement-card {
+            background: white;
+            padding: 1.5em;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .achievement-icon {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
+
+        .achievement-card h4 {
+            color: #667eea;
+            margin-bottom: 0.5em;
+        }
+
+        /* Education Section */
+        .education-timeline {
+            display: grid;
+            gap: 1.5em;
+            margin-top: 2em;
+        }
+
+        .education-item {
+            background: white;
+            padding: 1.5em;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+        }
+
+        .education-info h3 {
+            color: #667eea;
+            margin-bottom: 0.5em;
+        }
+
+        .education-score {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1em;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: transparent;
+    position: relative;
+    z-index: 1;
+            color: blue;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+             background:gradient(135deg, #667eea 0%, #764ba2 100%);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2em;
+            margin-top: 2em;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2em;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .contact-card h3 {
+            margin-bottom: 1em;
+        }
+
+        .contact-card a {
+            color: black;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1em;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .education-item {
+                grid-template-columns: 1fr;
+                gap: 1em;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* AI Chatbot Styles */
+        #chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1001;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #chatbot-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+        }
+
+        #chatbot-window {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chatbot-header h3 {
+            margin: 0;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.2s ease;
+        }
+
+        .chatbot-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8f9fa;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-content {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            line-height: 1.4;
+            font-size: 14px;
+        }
+
+        .message.bot .message-content {
+            background: white;
+            color: #333;
+            border-bottom-left-radius: 5px;
+        }
+
+        .message.user .message-content {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .message-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .message.bot .message-avatar {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .message.user .message-avatar {
+            background: #e9ecef;
+            color: #495057;
+        }
+
+        .chatbot-input-area {
+            padding: 15px 20px;
+            background: white;
+            border-top: 1px solid #e9ecef;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chatbot-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #e9ecef;
+            border-radius: 20px;
+            outline: none;
+            font-size: 14px;
+            transition: border-color 0.2s ease;
+        }
+
+        .chatbot-input:focus {
+            border-color: #667eea;
+        }
+
+        .chatbot-send {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .chatbot-send:hover {
+            transform: scale(1.05);
+        }
+
+        .chatbot-send:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 10px 15px;
+            background: white;
+            border-radius: 18px;
+            border-bottom-left-radius: 5px;
+            max-width: 80%;
+        }
+
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #667eea;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+
+        .quick-suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .quick-suggestion {
+            background: #e9ecef;
+            color: #495057;
+            border: none;
+            border-radius: 15px;
+            padding: 6px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .quick-suggestion:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        @media (max-width: 400px) {
+            #chatbot-window {
+                width: 320px;
+                right: -10px;
+            }
+        }
+
+        /* Navigation */
+       .nav {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  padding: 10px 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  display: flex;
+  gap: 10px;
+  transition: opacity 0.4s ease;
+  opacity: 1;
+}
+
+.nav a {
+  display: inline-block;
+  padding: 8px 16px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: 500;
+  background: rgba(102, 126, 234, 0.15);
+  transition: all 0.3s ease;
+}
+
+.nav a:hover {
+  background: #667eea;
+  color: white;
+  transform: scale(1.05);
+}
+
+
+
+        #preloader {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: #0a0a0a;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+.loader .emoji {
+  font-size: 3rem;
+  animation: spin 1.5s linear infinite;
+}
+
+.loader p {
+  font-size: 1.2rem;
+  margin-top: 1em;
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+    </style>
+
+<!-- Vanta.js Globe Dependencies -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+</head>
+
+<body>
+    <!-- Funny Preloader -->
+<div id="preloader">
+  <div class="loader">
+    <div class="emoji">🤖</div>
+    <p>Booting up Kush's brain... 🧠</p>
+  </div>
+</div>
+
+    <nav class="nav">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Awards</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    
+
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Kush Singhal</h1>
+                <p class="tagline">Cybersecurity & Android Developer</p>
+                <p class="subtitle">Expertise in BCI and Software Security • National hackathon winner with proven leadership at GDG Campus IIMT and SOARX • Specialized in AI-driven security solutions and mobile application development</p>
+                
+                <div class="contact-info">
+                    <a href="tel:7060002458" class="contact-item">
+                        📞 7060002458
+                    </a>
+                    <a href="mailto:kushsinghal82@gmail.com" class="contact-item">
+                        ✉️ kushsinghal82@gmail.com
+                    </a>
+                </div>
+                
+                <a href="#about" class="cta-button">Explore My Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Chatbot -->
+    <div id="chatbot-container">
+        <button id="chatbot-toggle">🤖</button>
+        <div id="chatbot-window">
+            <div class="chatbot-header">
+                <h3>🤖 Ask me about Kush</h3>
+                <button class="chatbot-close">×</button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message bot">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                        Hi! I'm Kush's AI assistant. I can answer questions about his skills, projects, achievements, and experience. What would you like to know?
+                        <div class="quick-suggestions">
+                            <button class="quick-suggestion">Tell me about his projects</button>
+                            <button class="quick-suggestion">What are his skills?</button>
+                            <button class="quick-suggestion">Recent achievements?</button>
+                            <button class="quick-suggestion">Contact information</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-input-area">
+                <input type="text" class="chatbot-input" placeholder="Ask me anything about Kush..." maxlength="200">
+                <button class="chatbot-send">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div>
+                    <h3 style="color: #667eea; margin-bottom: 1em;">Passionate Technology Innovator</h3>
+                    <p class="about-text">
+                        I'm a dedicated Cybersecurity and Android Developer with a unique expertise in Brain-Computer Interface (BCI) technology and software security. Currently pursuing B.Tech in Computer Science with specialization in AI & Data Science at IIMT College of Engineering.
+                    </p>
+                    <p class="about-text">
+                        My journey in tech is marked by consistent achievements in national hackathons and leadership roles in prestigious organizations like Google Developer Groups and SORAX. I'm passionate about creating secure, innovative solutions that push the boundaries of mobile development and cybersecurity.
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: #667eea; margin-bottom: 1em;">What I Bring</h4>
+                    <ul class="about-highlights">
+                        <li>National hackathon winner with proven track record</li>
+                        <li>Leadership experience in tech communities</li>
+                        <li>Expertise in cutting-edge BCI technology</li>
+                        <li>Strong foundation in AI-driven security solutions</li>
+                        <li>Hands-on experience with IoT and mobile security</li>
+                        <li>Mentorship and team collaboration skills</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>🔒 Cybersecurity</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Ethical Hacking</span>
+                        <span class="skill-tag">Network Security</span>
+                        <span class="skill-tag">Threat Intelligence</span>
+                        <span class="skill-tag">Penetration Testing</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>📱 Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Android</span>
+                        <span class="skill-tag">Kotlin</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Firebase</span>
+                        <span class="skill-tag">IoT Integration</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>🤖 Technologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Neural Networks</span>
+                        <span class="skill-tag">AES Encryption</span>
+                        <span class="skill-tag">Data Science</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>💻 Programming</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">Data Structures</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Leadership Experience</h2>
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <h3>Google Developer Groups Campus IIMT</h3>
+                    <div class="role">Android Lead | Nov 2024 - Present</div>
+                    <ul>
+                        <li>Led Android workshops on Kotlin, Firebase, and UI/UX optimization</li>
+                        <li>Developed secure applications with data encryption and threat mitigation</li>
+                        <li>Collaborated on open-source mobile security projects</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h3>SOARX</h3>
+                    <div class="role">Technical Lead | Oct 2024 - Present</div>
+                    <ul>
+                        <li>Spearheaded cybersecurity & IoT projects with real-time threat monitoring</li>
+                        <li>Engineered Android apps with AES encryption and biometric authentication</li>
+                        <li>Mentored junior developers in secure coding practices</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🚗 Vehicle Tracking System</h3>
+                        <p>IoT & Mobile Security</p>
+                    </div>
+                    <div class="project-content">
+                        <p>Advanced vehicle monitoring system with comprehensive security features and real-time tracking capabilities.</p>
+                        <ul class="project-features">
+                            <li>GPS-based real-time monitoring with remote engine control</li>
+                            <li>IoT sensors for predictive maintenance and security alerts</li>
+                            <li>AES-256 encryption for secure data transmission</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🧠 Brain-Computer Interface</h3>
+                        <p>AI & Neural Interfaces</p>
+                    </div>
+                    <div class="project-content">
+                        <p>Revolutionary BCI system enabling hands-free vehicle control through advanced neural signal processing.</p>
+                        <ul class="project-features">
+                            <li>EEG-controlled vehicle using ADS1299 for hands-free navigation</li>
+                            <li>Brainwave processing algorithms for focus and movement intent</li>
+                            <li>Real-time neural signal analysis and interpretation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements" class="section">
+        <div class="container">
+            <h2 class="section-title">Achievements & Recognition</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🥇</div>
+                    <h4>1st Prize</h4>
+                    <p>IIMT College Hackathon 2025</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🥉</div>
+                    <h4>3rd Prize</h4>
+                    <p>Amity Hackathon (Cyber Cup) 2023</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <h4>Best Theme Award</h4>
+                    <p>ITS College Hackathon 2024</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <h4>Best Theme Award</h4>
+                    <p>Sharda Ideathon 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-timeline">
+                <div class="education-item">
+                    <div class="education-info">
+                        <h3>B.Tech Computer Science (AI & Data Science)</h3>
+                        <p><strong>IIMT College of Engineering</strong></p>
+                        <p>Expected Graduation: 2026</p>
+                    </div>
+                    <div class="education-score">
+                        <div>Currently Pursuing</div>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-info">
+                        <h3>CBSE - Class XII</h3>
+                        <p><strong>Lilawati Convent School</strong></p>
+                        <p>Graduated: 2022</p>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-info">
+                        <h3>ICSE - Class X</h3>
+                        <p><strong>Mount Fort Academy</strong></p>
+                        <p>Graduated: 2020</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3em;">
+                <h3 style="color: #667eea; text-align: center; margin-bottom: 2em;">Professional Certifications</h3>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>🔐 Security Certifications</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Fundamentals of Cybersecurity (Google)</span>
+                            <span class="skill-tag">Ethical Hacking & Penetration Testing (Udemy)</span>
+                            <span class="skill-tag">IoT Security Specialization (Cybrary)</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>📊 Data Science</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Data Science & Machine Learning (Coursera)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title" style="color: black;">Let's Connect</h2>
+            <p style="text-align: center; font-size: 1.2em; margin-bottom: 2em; opacity: 0.9;">
+                Ready to collaborate on innovative projects or discuss opportunities in cybersecurity and mobile development?
+            </p>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>📞 Phone</h3>
+                    <a href="tel:7060002458">7060002458</a>
+                </div>
+                <div class="contact-card">
+                    <h3>✉️ Email</h3>
+                    <a href="mailto:kushsinghal82@gmail.com">kushsinghal82@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <h3>🌐 Languages</h3>
+                    <p>English (Fluent)<br>Hindi (Native)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Chatbot Data
+        const chatbotData = {
+            greeting: {
+    keywords: ['hi', 'hello', 'hey', 'how are you', 'whats up'],
+    response: "👋 Hey there! I'm KushBot 🤖<br><br>I'm running on 100% caffeine and JavaScript ☕💻<br>How can I help you today?"
+},
+
+            skills: {
+                keywords: ['skill', 'technology', 'programming', 'technical', 'expertise', 'languages', 'tools'],
+                response: "Kush has expertise in multiple areas:<br><br>🔒 <strong>Cybersecurity</strong>: Ethical Hacking, Network Security, Threat Intelligence, Penetration Testing<br><br>📱 <strong>Development</strong>: Android (Kotlin, Java), Firebase, IoT Integration<br><br>🤖 <strong>Technologies</strong>: Machine Learning, Neural Networks, AES Encryption, Data Science<br><br>💻 <strong>Programming</strong>: Java, Python, UI/UX Design"
+            },
+            projects: {
+                keywords: ['project', 'work', 'portfolio', 'built', 'created', 'developed'],
+                response: "Kush has worked on fascinating projects:<br><br>🚗 <strong>Vehicle Tracking System</strong>: IoT system with GPS, remote engine control, and AES-256 encryption.<br><br>🧠 <strong>Brain-Computer Interface</strong>: EEG-based hands-free vehicle control with brainwave analysis."
+            },
+            achievements: {
+                keywords: ['achievement', 'award', 'prize', 'hackathon', 'competition', 'won', 'winner'],
+                response: "🏆 <strong>Achievements</strong>:<br><br>🥇 1st Prize - IIMT Hackathon 2025<br>🥉 3rd Prize - Amity Hackathon 2023<br>🏅 Best Theme Award - ITS & Sharda Hackathons"
+            },
+            experience: {
+                keywords: ['experience', 'job', 'role', 'work', 'gdg', 'sorax', 'lead'],
+                response: "👨‍💻 Kush's Leadership:<br><br><strong>Android Lead</strong> at GDG IIMT (2024-Present)<br><strong>Technical Lead</strong> at SORAX (2024-Present)<br>Leading secure Android and IoT solutions!"
+            },
+            education: {
+                keywords: ['education', 'study', 'school', 'college', 'degree', 'academic'],
+                response: "🎓 Education:<br><br>B.Tech in AI & Data Science (IIMT - 2026)<br>CBSE XII - 2022<br>ICSE X - 2020"
+            },
+            contact: {
+                keywords: ['contact', 'phone', 'email', 'reach', 'connect'],
+                response: "📞 Phone: 7060002458<br>✉️ Email: kushsinghal82@gmail.com<br>Always happy to collaborate!"
+            },
+            funny: {
+                keywords: ['joke', 'funny', 'laugh', 'bored', 'meme'],
+                response: "😂 Here's a tech joke for you:<br><br><em>Why do Java developers wear glasses?</em><br>Because they don't C#! 🤓"
+            },
+            default: "😄 Ask me anything about Kush's skills, projects, education, or say 'tell me a joke' for fun!"
+        };
+
+        function findBestMatch(userInput) {
+            const input = userInput.toLowerCase();
+            let bestMatch = 'default';
+            let maxMatches = 0;
+
+            for (const [category, data] of Object.entries(chatbotData)) {
+                if (category === 'default') continue;
+                const matches = data.keywords.filter(keyword => input.includes(keyword)).length;
+                if (matches > maxMatches) {
+                    maxMatches = matches;
+                    bestMatch = category;
+                }
+            }
+
+            return bestMatch;
+        }
+
+        function addMessage(content, isUser = false) {
+            const messagesContainer = document.getElementById('chatbot-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            avatar.textContent = isUser ? '👤' : '🤖';
+
+            const messageContent = document.createElement('div');
+            messageContent.className = 'message-content';
+            if (isUser) {
+                messageContent.textContent = content;
+            } else {
+                const formatted = content
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\n/g, '<br>');
+                messageContent.innerHTML = formatted;
+            }
+
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(messageContent);
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const messagesContainer = document.getElementById('chatbot-messages');
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message bot';
+            typingDiv.id = 'typing-indicator';
+
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            avatar.textContent = '🤖';
+
+            const typingContent = document.createElement('div');
+            typingContent.className = 'typing-indicator';
+            typingContent.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+
+            typingDiv.appendChild(avatar);
+            typingDiv.appendChild(typingContent);
+            messagesContainer.appendChild(typingDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const typingIndicator = document.getElementById('typing-indicator');
+            if (typingIndicator) typingIndicator.remove();
+        }
+
+        function handleUserMessage(message) {
+            const userInput = message.trim();
+            if (!userInput) return;
+            addMessage(userInput, true);
+            showTypingIndicator();
+
+            setTimeout(() => {
+                hideTypingIndicator();
+                const category = findBestMatch(userInput);
+                const response = chatbotData[category]?.response || chatbotData.default;
+                addMessage(response);
+            }, 1200);
+        }
+
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const chatbotClose = document.querySelector('.chatbot-close');
+        const chatbotInput = document.querySelector('.chatbot-input');
+        const chatbotSend = document.querySelector('.chatbot-send');
+
+        chatbotToggle.addEventListener('click', () => {
+            const isVisible = chatbotWindow.style.display === 'flex';
+            chatbotWindow.style.display = isVisible ? 'none' : 'flex';
+            if (!isVisible) setTimeout(() => chatbotInput.focus(), 200);
+        });
+
+        chatbotClose.addEventListener('click', () => {
+            chatbotWindow.style.display = 'none';
+        });
+
+        chatbotSend.addEventListener('click', () => {
+            const message = chatbotInput.value;
+            if (message.trim()) {
+                handleUserMessage(message);
+                chatbotInput.value = '';
+            }
+        });
+
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const message = chatbotInput.value;
+                if (message.trim()) {
+                    handleUserMessage(message);
+                    chatbotInput.value = '';
+                }
+            }
+        });
+
+        // 🚀 Auto-open chatbot after 1 second
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                chatbotWindow.style.display = 'flex';
+            }, 1000);
+        });
+
+        // Quick Suggestions
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('quick-suggestion')) {
+                const suggestion = e.target.textContent;
+                handleUserMessage(suggestion);
+                e.target.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+   
+
+
+<script>
+VANTA.GLOBE({
+  el: "#hero",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.0,
+  scaleMobile: 1.0,
+  color: 0x667eea,
+  backgroundColor: 0x0a0a0a
+});
+</script>
+<script>
+  window.addEventListener("load", function () {
+    const preloader = document.getElementById("preloader");
+    preloader.style.opacity = 0;
+    setTimeout(() => preloader.style.display = "none", 500);
+  });
+</script>
+<script>
+  const nav = document.querySelector('.nav');
+  let lastScrollTop = 0;
+  let ticking = false;
+
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.scrollY;
+
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (currentScroll > lastScrollTop && currentScroll > 100) {
+          nav.style.opacity = "0"; // hide nav on scroll down
+        } else {
+          nav.style.opacity = "1"; // show nav on scroll up
+        }
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        ticking = false;
+      });
+
+      ticking = true;
+    }
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (e.clientY <= 50) {
+      nav.style.opacity = "1"; // show if mouse is at top
+    }
+  });
+</script>
+
+
+
+
+</body>
+
+</html>
